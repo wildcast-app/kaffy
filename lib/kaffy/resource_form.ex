@@ -20,6 +20,7 @@ defmodule Kaffy.ResourceForm do
 
     cond do
       !is_nil(choices) ->
+        choices = [{"", nil}] ++ choices
         select(form, field, choices, class: "custom-select")
 
       permission == :read ->
@@ -59,6 +60,7 @@ defmodule Kaffy.ResourceForm do
 
     cond do
       !is_nil(choices) ->
+        choices = [{"", nil}] ++ choices
         select(form, field, choices, class: "custom-select")
 
       true ->

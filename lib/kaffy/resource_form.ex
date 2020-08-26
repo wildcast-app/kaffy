@@ -20,7 +20,6 @@ defmodule Kaffy.ResourceForm do
 
     cond do
       !is_nil(choices) ->
-        choices = [{"", nil}] ++ choices
         select(form, field, choices, class: "custom-select")
 
       permission == :read ->
@@ -60,7 +59,6 @@ defmodule Kaffy.ResourceForm do
 
     cond do
       !is_nil(choices) ->
-        choices = [{"", nil}] ++ choices
         select(form, field, choices, class: "custom-select")
 
       true ->
@@ -316,10 +314,12 @@ defmodule Kaffy.ResourceForm do
                 false -> elem(popular_strings, 0)
               end
 
+            choices = [{"", nil}] ++ Enum.map(options, fn o -> {Map.get(o, string_field, "Resource ##{o.id}"), o.id} end)
+
             select(
               form,
               field,
-              Enum.map(options, fn o -> {Map.get(o, string_field, "Resource ##{o.id}"), o.id} end),
+              choices,
               class: "custom-select"
             )
         end

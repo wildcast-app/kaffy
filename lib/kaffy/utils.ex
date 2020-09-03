@@ -26,6 +26,13 @@ defmodule Kaffy.Utils do
   end
 
   @doc """
+  Returns the :logout_url if one is set, otherwise returns false
+  """
+  def logout_url() do
+    env(:logout_url, false)
+  end
+
+  @doc """
   Returns the JSON package used by phoenix configs. If no such config exists, raise an exception.
   """
   @spec json() :: atom()

@@ -111,6 +111,11 @@
                     </div>
                 </li>
             <% end %>
+            <%= if Kaffy.Utils.logout_url() do %>
+              <li class="nav-item">
+                <a href="<%= Kaffy.Utils.logout_url() %>">Logout</a>
+              </li>
+            <% end %>
           </ul>
         </nav>
 
